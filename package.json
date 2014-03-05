@@ -1,0 +1,23 @@
+{
+  "name": "js-quirks",
+  "version": "0.0.1",
+  "description": "A Node.js project which seeks to explore the good parts of Javascript and mostly the awful parts based on \"JavaScript the good parts\" written by Douglas Crockford",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hernanhht/js-quirks.git"
+  },
+  "author": "Hernán Tierno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hernanhht/js-quirks/issues"
+  },
+  "devDependencies": {
+    "mocha": "1.11.0",
+    "assert": "0.4.9"
+  }
+  "homepage": "https://github.com/hernanhht/js-quirks"
+}
