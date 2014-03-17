@@ -4,6 +4,43 @@ var assert  = require("assert");
 
 describe("JavaScript The Good Parts", function () {
     "use strict";
+
+    describe("Chapter 3 - Objects", function () {
+        it("Obtaining the Object Literal's prototype", function () {
+            var obj = {
+                value: 0
+            };
+            assert.ok(obj);
+            assert.ok(Object.getPrototypeOf(obj));
+            assert.equal(Object.prototype, Object.getPrototypeOf(obj));
+        });
+        it("Obtaining ths Object's prototype (created by a Constructor invocation)", function () {
+            //This form of instantion is dangerous, because the Object property
+            //In the Global Object may be overriden and this could cause an error
+            var obj = new Object();
+            obj.value = 0;
+
+            assert.ok(obj);
+            assert.ok(Object.getPrototypeOf(obj));
+            assert.equal(Object.prototype, Object.getPrototypeOf(obj));
+        });
+        it("Object created by a Create factory setting prototype to null", function () {
+            var obj = Object.create(null); //null will be the prototype
+            obj.value = 0;
+
+            assert.ok(obj);
+            assert.ok(!Object.getPrototypeOf(obj));
+        });
+        it("Object created by a Create factory method with a prototype", function () {
+            var baseObject = {name: "base"},
+                obj = Object.create(baseObject); //null will be the prototype
+            obj.value = 0;
+
+            assert.ok(obj);
+            assert.ok(Object.getPrototypeOf(obj));
+            assert.equal(Object.getPrototypeOf(obj), baseObject);
+        });
+    });
     describe("Chapter 4 - Functions", function () {
         it("Method invocation", function () {
             var o = {
@@ -39,7 +76,7 @@ describe("JavaScript The Good Parts", function () {
             //be undefined. If we don't use 'strict mode', 'this' will be bounded
             //to the global object
             //So, invoking 'getter' will throw a TypeError (in 'strict mode') 
-            assert.throws(function (){
+            assert.throws(function () {
                 getter();
             });
         });
